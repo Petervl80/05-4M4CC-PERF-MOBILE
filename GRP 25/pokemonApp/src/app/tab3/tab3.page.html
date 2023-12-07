@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Pokedéx
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,33 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Pokedéx</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let poke of pokemons; index as i">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{pokemons[i].nome | uppercase}}</ion-card-title>
+            <ion-img alt="" src="{{pokemons[i].img}}"></ion-img>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label color="success">Vitórias: {{pokemons[i].results[0]}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label color="warning">Empates: {{pokemons[i].results[1]}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label color="danger">Derrotas: {{pokemons[i].results[2]}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

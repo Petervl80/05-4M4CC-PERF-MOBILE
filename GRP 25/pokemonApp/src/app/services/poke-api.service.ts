@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +7,20 @@ import { Injectable } from '@angular/core';
 export class PokeAPIService {
 
   constructor(private httpClient: HttpClient) { }
-  getPokeAPIService(id: number = Math.floor(Math.random() * 100)) {
-    return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    
+
+  pokeAbilities: number = 0
+
+  pokemonsCaptureds: any = []
+  pokemonAtual: number = -1
+
+  getPokeAPIService(id: number = Math.floor(Math.random()*800)){
+    return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  }
+  setAbilities(valueHabil: number) {
+    this.pokeAbilities = valueHabil
+  }
+
+  getAbilities(){
+    return this.pokeAbilities
   }
 }
